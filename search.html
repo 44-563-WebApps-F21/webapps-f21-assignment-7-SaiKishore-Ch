@@ -19,7 +19,8 @@
   <p  style="color:red"id="tries">Number of tries zero</p>
   <p style="color: seagreen;" id ="distance">Distance is unknown</p>
 
-  
+  <button  class="btn btn-primary" onclick="newGame()">New game</button>
+  <br><br>
   <div class="container">    
     <div class="row">
         <div class="col-sm-2"><img id="image-0" src="Flower.jpg" height="200px" width="200px" onclick="check(0)"></div>
@@ -79,6 +80,30 @@
                 return horizontalDistance
             else
                 return verticalDistance
+    }
+    function getPosition(value) {
+        var elementValue = 0
+        for(var i=0; i<4; i++){
+            for(var j=0; j<6; j++){
+                if(elementValue == value){
+                    return [i+1, j+1]
+                }
+                elementValue++
+            }
+        }
+    }
+
+    // BONUS
+    function newGame(){
+            triesCount = 0
+            animalLocation = Math.floor(Math.random()*23 + 0)
+            document.getElementById("tries").innerHTML = "Number of tries is 0."
+            for(var i=0; i<24; i++){
+                if(ids[i] == ids[animalLocation])
+                    document.getElementById(ids[i]).src = "Dog.jpg"
+                else
+                    document.getElementById(ids[i]).src = "Flower.jpg"
+            }
     }
 </script>
 </body>
